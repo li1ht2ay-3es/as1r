@@ -49,7 +49,7 @@ runs:
         }
 
 
-        # merge mingw-flags
+        merge mingw-flags
         # merge gameboy-prof9
 
 
