@@ -1,0 +1,35 @@
+description: Run schedule
+
+
+inputs:
+  token:
+    description: Personal Access Token
+    required: false
+    default: ''
+
+
+runs:
+  using: composite
+
+  steps:
+    - uses: li1ht2ay-3es/gi1-ac2io3s@rebase-repo
+      with:
+        remote_repo: RPGHacker/asar
+        remote_branch: asar_19
+
+        token: ${{ inputs.token }}
+        auto: true
+
+
+    - uses: li1ht2ay-3es/gi1-ac2io3s@keep-alive
+      with:
+        token: ${{ inputs.token }}
+        auto: true
+
+
+    - uses: li1ht2ay-3es/gi1-ac2io3s@keep-alive
+      with:
+        branch: build
+
+        token: ${{ inputs.token }}
+        auto: true
