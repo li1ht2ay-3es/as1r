@@ -59,7 +59,7 @@ runs:
         CC: ccache ${{ env.MINGW_CC }}
         CXX: ccache ${{ env.MINGW_CXX }}
       run: |
-        cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=../cmake/mingw-x86.cmake -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DASAR_GEN_DLL=OFF -DASAR_GEN_LIB=OFF -DASAR_COVERAGE=OFF $CMAKE_EXTRA_OPTS ../src
+        cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=../cmake/mingw-x86.cmake -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DASAR_GEN_DLL=OFF -DASAR_GEN_LIB=OFF -DASAR_COVERAGE=OFF $CMAKE_EXTRA_OPTS ${{github.workspace}}/src
         make
 
         # cmake -S ${{github.workspace}}/cmake -B ${{ github.workspace }}/build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DASAR_GEN_DLL=OFF -DASAR_GEN_LIB=OFF -DASAR_COVERAGE=OFF
