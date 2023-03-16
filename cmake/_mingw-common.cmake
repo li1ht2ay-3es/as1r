@@ -15,7 +15,7 @@ else(CLANG)
         set(CMAKE_CXX_COMPILER "${TOOL_PREFIX}g++-posix")
 endif(CLANG)
 
-set(CMAKE_RC_COMPILER ${TOOL_PREFIX}windres)
+set(CMAKE_RC_COMPILER ${TOOL_PREFIX}windres-posix)
 set(CMAKE_RC_COMPILE_OBJECT 
 	"<CMAKE_RC_COMPILER> <FLAGS> -O coff <DEFINES> -i <SOURCES> -o <OBJECT>")
 #set(CMAKE_LINKER "${TOOL_PREFIX}g++")
