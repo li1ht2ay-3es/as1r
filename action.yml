@@ -59,8 +59,8 @@ runs:
         CC: ccache ${{ env.MINGW_CC }}
         CXX: ccache ${{ env.MINGW_CXX }}
       run: |
-        cmake -S ${{github.workspace}}/src -B ${{ github.workspace }}/build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DASAR_GEN_DLL=OFF -DASAR_GEN_LIB=OFF -DASAR_COVERAGE=OFF
-        cmake --build ${{ github.workspace }}/build --config Release
+        cmake --source ${{github.workspace}}/cmake --build ${{ github.workspace }}/build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DASAR_GEN_DLL=OFF -DASAR_GEN_LIB=OFF -DASAR_COVERAGE=OFF
+        cmake --source ${{github.workspace}}/src --build ${{ github.workspace }}/build --config Release
         # ls -R
 
 
