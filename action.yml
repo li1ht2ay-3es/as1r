@@ -18,6 +18,7 @@ runs:
 
   steps:
     - uses: li1ht2ay-3es/gi1-ac2io3s@checkout-repo
+      name: Checkout branch
       with:
         branch: upstream
 
@@ -25,26 +26,20 @@ runs:
         auto: true
 
 
-#   - uses: li1ht2ay-3es/gi1-ac2io3s@mingw-install
-#      with:
-#        arch: ${{ inputs.arch }}
+    - uses: li1ht2ay-3es/gi1-ac2io3s@mingw-install
+      name: MinGW install
+      with:
+        arch: ${{ inputs.arch }}
 
 
     - uses: hendrikmuhs/ccache-action@main
+      name: CCache install
       with:
         key: ${{ inputs.arch }}
 
 
     - shell: bash
-      run: |
-        sudo apt-get install \
-          binutils-mingw-w64-i686 \
-          g++-mingw-w64-i686 \
-          gcc-mingw-w64-i686 \
-          mingw-w64-i686-dev
-
-
-    - shell: bash
+      name: Add-ons install
       run: |
         merge () {
           echo "<<< ===  merging  $1  === >>>";
@@ -63,6 +58,7 @@ runs:
 
 
     - shell: bash
+      name: Build program
       env:
         CC: ccache ${{ env.MINGW_CC }}
         CXX: ccache ${{ env.MINGW_CXX }}
@@ -78,6 +74,7 @@ runs:
 
 
     - uses: actions/upload-artifact@main
+      name: Artifact upload
       with:
         name: asar_${{ inputs.arch }}
         path: |
