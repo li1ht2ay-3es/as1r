@@ -60,7 +60,7 @@ runs:
       run: |
         cmake \
           -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DASAR_GEN_DLL=OFF -DASAR_GEN_LIB=OFF -DASAR_COVERAGE=OFF $CMAKE_EXTRA_OPTS \
+          -DASAR_GEN_DLL=OFF -DASAR_GEN_LIB=OFF $CMAKE_EXTRA_OPTS \
           -DCMAKE_TOOLCHAIN_FILE=../cmake/mingw-${{ inputs.arch }}.cmake \
           -B ${{github.workspace}}/build ${{github.workspace}}/src
         cmake --build ${{github.workspace}}/build --config Release
@@ -71,4 +71,4 @@ runs:
       with:
         name: asar_${{ inputs.arch }}
         path: |
-          build\asar.exe
+          bin\asar.exe
