@@ -71,4 +71,4 @@ runs:
       with:
         name: asar_${{ inputs.arch }}
         path: |
-          *.exe
+          bin\asar.exe
