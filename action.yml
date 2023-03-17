@@ -63,7 +63,7 @@ runs:
           -DASAR_GEN_DLL=OFF -DASAR_GEN_LIB=OFF -DASAR_COVERAGE=OFF $CMAKE_EXTRA_OPTS \
           -DCMAKE_TOOLCHAIN_FILE=../cmake/mingw-${{ inputs.arch }}.cmake \
           ${{github.workspace}}/src
-        cmake --config Release ${{github.workspace}}/src
+        cmake ${{github.workspace}}/src
 
 
 
