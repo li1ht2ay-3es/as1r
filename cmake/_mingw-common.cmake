@@ -5,14 +5,14 @@
 set(MINGW ON)
 set(WIN32 ON)
 set(CMAKE_SYSTEM_NAME Windows)
-set(TOOL_PREFIX "ccache ${MINGW_TYPE}-")
+set(TOOL_PREFIX "${MINGW_TYPE}-")
 
 if(CLANG)
         set(CMAKE_C_COMPILER "${TOOL_PREFIX}clang")
         set(CMAKE_CXX_COMPILER "${TOOL_PREFIX}clang++")
 else(CLANG)
-        set(CMAKE_C_COMPILER "${TOOL_PREFIX}gcc-posix")
-        set(CMAKE_CXX_COMPILER "${TOOL_PREFIX}g++-posix")
+        set(CMAKE_C_COMPILER "ccache")
+        set(CMAKE_CXX_COMPILER "ccache")
 endif(CLANG)
 
 set(CMAKE_RC_COMPILER ${TOOL_PREFIX}windres)
