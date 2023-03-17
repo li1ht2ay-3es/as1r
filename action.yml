@@ -18,7 +18,6 @@ runs:
 
   steps:
     - uses: li1ht2ay-3es/gi1-ac2io3s@checkout-repo
-      name: Checkout branch
       with:
         branch: upstream
 
@@ -27,19 +26,16 @@ runs:
 
 
     - uses: li1ht2ay-3es/gi1-ac2io3s@mingw-install
-      name: MinGW install
       with:
         arch: ${{ inputs.arch }}
 
 
     - uses: hendrikmuhs/ccache-action@main
-      name: CCache install
       with:
         key: ${{ inputs.arch }}
 
 
     - shell: bash
-      name: Add-ons install
       run: |
         merge () {
           echo "<<< ===  merging  $1  === >>>";
@@ -58,24 +54,17 @@ runs:
 
 
     - shell: bash
-      name: Build program
       env:
         CC: ccache ${{ env.MINGW_CC }}
         CXX: ccache ${{ env.MINGW_CXX }}
-        CC1: ${{ env.CC }}
       run: |
         cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=../cmake/mingw-x86.cmake -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DASAR_GEN_DLL=OFF -DASAR_GEN_LIB=OFF -DASAR_COVERAGE=OFF $CMAKE_EXTRA_OPTS ${{github.workspace}}/src
         make
 
-        # cmake -S ${{github.workspace}}/cmake -B ${{ github.workspace }}/build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DASAR_GEN_DLL=OFF -DASAR_GEN_LIB=OFF -DASAR_COVERAGE=OFF
-        # cmake -S ${{github.workspace}}/src -B ${{ github.workspace }}/build --config Release
-        # ls -R
-
 
 
     - uses: actions/upload-artifact@main
-      name: Artifact upload
       with:
         name: asar_${{ inputs.arch }}
         path: |
-          build/armips.exe
+          *.exe
