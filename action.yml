@@ -35,7 +35,8 @@ runs:
         key: ${{ inputs.arch }}
 
 
-    - run: |
+    - shell: bash
+      run: |
         sudo apt-get install \
           binutils-mingw-w64-i686 \
           g++-mingw-w64-i686 \
