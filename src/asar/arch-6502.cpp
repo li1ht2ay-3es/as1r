@@ -110,7 +110,6 @@ bool asblock_6502(char** word, int numwords)
 	{
 		init_index("", ",x");
 		if (match("(", ")") && confirmqpar(substr(word[1] + 1, (int)(strlen(word[1] + 1) - 2 - 1)))) asar_throw_warning(0, warning_id_65816_yy_x_does_not_exist);
-		the8(0x1F, 3);
 		the8(0x1D, 2);
 		the8(0x15, 1);
 		thenext8(0x16, 1);
@@ -143,7 +142,6 @@ opAFallback:
 			num=tmp.pos;
 		}
 		getvars(false)
-		the8(0x0F, 3);
 		the8(0x0D, 2);
 		the8(0x05, 1);
 		thenext8(0x06, 1);
