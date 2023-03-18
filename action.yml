@@ -49,7 +49,7 @@ runs:
 
 
         merge mingw-flags
-        # merge gameboy-prof9
+        merge nes-arch
 
 
 
