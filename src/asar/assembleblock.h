@@ -1,6 +1,6 @@
 #pragma once
 
-enum { arch_65816, arch_spc700, arch_spc700_inline, arch_superfx };
+enum { arch_6502, arch_65816, arch_spc700, arch_spc700_inline, arch_superfx };
 extern int arch;
 
 bool assemblemapper(char** word, int numwords);

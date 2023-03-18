@@ -225,6 +225,7 @@ static bool asblock_pick(char** word, int numwords)
 	}
 	if (arch==arch_spc700_inline) return asblock_spc700(word, numwords);
 	if (arch==arch_superfx) return asblock_superfx(word, numwords);
+	if (arch==arch_6502) return asblock_6502(word, numwords);
 	return true;
 }
 
@@ -762,6 +763,7 @@ void initstuff()
 	math_pri=false;
 	math_round=true;
 
+	if (arch==arch_6502) asinit_6502();
 	if (arch==arch_65816) asinit_65816();
 	if (arch==arch_spc700) asinit_spc700();
 	if (arch==arch_spc700_inline) asinit_spc700();
@@ -799,6 +801,7 @@ void finishpass()
 	else if (pushpcnum && pass == 0) asar_throw_error(pass, error_type_null, error_id_pushpc_without_pullpc);
 	else if (pushnsnum && pass == 0) asar_throw_error(pass, error_type_null, error_id_pushns_without_pullns);
 	freespaceend();
+	if (arch==arch_6502) asend_6502();
 	if (arch==arch_65816) asend_65816();
 	if (arch==arch_spc700) asend_spc700();
 	if (arch==arch_spc700_inline) asend_spc700();
@@ -2649,6 +2652,7 @@ void assembleblock(const char * block, bool isspecialline)
 	{
 		if(in_spcblock) asar_throw_error(0, error_type_block, error_id_feature_unavaliable_in_spcblock);
 		if (emulatexkas) asar_throw_warning(0, warning_id_convert_to_asar);
+		if (!stricmp(par, "6502")) { arch=arch_6502; return; }
 		if (!stricmp(par, "65816")) { arch=arch_65816; return; }
 		if (!stricmp(par, "spc700")) { arch=arch_spc700; return; }
 		if (!stricmp(par, "spc700-inline")) { asar_throw_warning(1, warning_id_feature_deprecated, "spc700-inline", " Use spcblock and endspcblock"); arch=arch_spc700_inline; return; }

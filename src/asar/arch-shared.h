@@ -1,6 +1,9 @@
 #pragma once
 
 // Should only be called inside assembleblock.cpp
+void asinit_6502();
+bool asblock_6502(char** word, int numwords);
+void asend_6502();
 void asinit_65816();
 bool asblock_65816(char** word, int numwords, bool fake, int& outlen);
 void asend_65816();
