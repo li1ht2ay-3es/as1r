@@ -39,7 +39,7 @@ bool asblock_6502(char** word, int numwords)
 #define end() return false
 #define as0(    op, byte) if (is(op)          ) { write1((unsigned int)byte);              return true; }
 #define as1(    op, byte) if (is(op) && len==1) { write1((unsigned int)byte); write1(num); return true; }
-#define as2(    op, byte) if (is(op) && len==2) { write1((unsigned int)byte); write2(num); return true; } \
+#define as2(    op, byte) if (is(op) && len==2) { write1((unsigned int)byte); write2(num); return true; }
 #define as_a(   op, byte) if (is(op)) { if(!explicitlen && !hexconstant) asar_throw_warning(0, warning_id_implicitly_sized_immediate); if (len==1) { write1(byte); write1(num); } \
 																					 else { write1((unsigned int)byte); write2(num); } return true; }
 #define as_xy(  op, byte) if (is(op)) { if(!explicitlen && !hexconstant) asar_throw_warning(0, warning_id_implicitly_sized_immediate); if (len==1) { write1(byte); write1(num); } \
