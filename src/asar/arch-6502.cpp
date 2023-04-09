@@ -65,7 +65,7 @@ bool asblock_6502(char** word, int numwords)
 		as0("RTI", 0x40); as0("PHA", 0x48); as0("LSR", 0x4A);
 		as0("CLI", 0x58); as0("RTS", 0x60);
 		as0("PLA", 0x68); as0("ROR", 0x6A); as0("SEI", 0x78);
-		as0("TXA", 0x8A);//these tables are blatantly stolen from xkas
+		as0("DEY", 0x88); as0("TXA", 0x8A);//these tables are blatantly stolen from xkas
 		as0("TYA", 0x98); as0("TXS", 0x9A);
 		as0("TAY", 0xA8); as0("TAX", 0xAA); as0("CLV", 0xB8);
 		as0("TSX", 0xBA); as0("INY", 0xC8); as0("DEX", 0xCA);
